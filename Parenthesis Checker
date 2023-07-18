@@ -1,0 +1,29 @@
+{
+    static boolean ispar(String x)
+    {
+       int i=0;
+       Stack<Character> s=new Stack<>();
+
+       while(i<x.length()){
+           char v = x.charAt(i);
+           if(v=='(' || v=='{' || v=='[' ){
+               s.push(v);
+           }
+           else{
+               if(s.isEmpty()){
+                   return false;
+               }
+               if( s.peek()=='(' && v==')' || s.peek() =='{' && v=='}' || s.peek()=='[' && v==']'){
+                   s.pop();
+               }else{
+                   return false;
+               }
+           }
+           i++;
+       }
+       if(s.isEmpty()){
+           return true;
+       }
+       return false;
+    }
+}
